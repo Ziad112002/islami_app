@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
 
-abstract final class AppStyles {
+abstract final class AppTextStyles {
   static const TextStyle whiteBold20 = TextStyle(
     fontSize: 20,
     color: AppColors.white,

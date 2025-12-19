@@ -13,6 +13,7 @@ class IslamiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
     routes: {
       Splash.routeName:(context)=>Splash(),
       Main.routeName:(context)=>Main()

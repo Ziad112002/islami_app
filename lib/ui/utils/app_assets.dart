@@ -7,10 +7,9 @@ abstract final class AppAssets {
   static const String icTime = '${_base}ic_time.png';
   static const String imgMostRecent = '${_base}img_most_recent.png';
   static const String imgSurNumberFrame = '${_base}sur_num.png';
-  static const String mosqueImg = '${_base}mosque_img.png';
-  static const String quranTabBg = '${_base}quran_bg.png';
+  static const String mosqueImg = '${_base}img_header.png';
+  static const String quranTabBg = '${_base}quran_tabBg.png';
   static const String splashImg = '${_base}Splash Screen.png';
   static const String islamiLogo = '${_base}Logo.png';
-
 
 }
