@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:islami/ui/screens/main/tabs/quran/quran.dart';
+import 'package:islami/ui/screens/main/tabs/quran/quran_tab.dart';
 import 'package:islami/ui/utils/app_colors.dart';
 
 import '../../utils/app_assets.dart';
@@ -16,7 +16,7 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   int selectedIndex = 0;
   List tabs=[
-    Quran(),
+    QuranTab(),
     Container(color: Colors.grey,),
     Container(color: Colors.deepOrange,),
     Container(color: Colors.cyanAccent,),

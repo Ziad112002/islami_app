@@ -5,8 +5,8 @@ import 'package:islami/ui/utils/app_text_style.dart';
 import 'package:islami/ui/utils/constants.dart';
 import '../../../../utils/app_colors.dart';
 
-class Quran extends StatelessWidget {
-  const Quran({super.key});
+class QuranTab extends StatelessWidget {
+  const QuranTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,15 @@ class Quran extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset(AppAssets.mosqueImg),
+          Image.asset(AppAssets.islamiImg),
           SizedBox(height: 16),
           buildSurNameTextField(),
           SizedBox(height: 16),
-          Expanded(child: buildSuraListView()),
+          Expanded(child: buildMostRecently()),
+          SizedBox(height: 16),
+
+          Expanded(flex: 2,
+              child: buildSuraListView()),
         ],
       ),
     );
@@ -55,61 +59,62 @@ class Quran extends StatelessWidget {
     );
   }
 
-  // Widget buildMostRecently(){
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Text("Most Recently",style: AppTextStyles.whiteBold16,),
-  //       SizedBox(height: 16,),
-  //       Expanded(
-  //         child: ListView.builder(
-  //           scrollDirection: Axis.horizontal,
-  //           itemCount: 10,
-  //             itemBuilder: (context,index)=> buildMostRecentSurItem(context)
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-  // Widget buildMostRecentSurItem(BuildContext context){
-  //   return Container(
-  //     margin: EdgeInsets.only(right: 10),
-  //     height: MediaQuery.of(context).size.height*.16,
-  //     width: MediaQuery.of(context).size.width*.6,
-  //     decoration: BoxDecoration(
-  //       color: AppColors.gold,
-  //       borderRadius: BorderRadius.circular(20),
-  //     ),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //
-  //
-  //       children: [
-  //         Column(
-  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //           children: [
-  //             Text("Al-Anbiya",style: AppTextStyles.lightBlackBold14,),
-  //             Text("الأنبياء",style: AppTextStyles.lightBlackBold14,),
-  //             Text("112 Verses  ",style: AppTextStyles.lightBlackBold14,),
-  //
-  //           ],
-  //         ),
-  //         Image.asset(AppAssets.imgMostRecent)
-  //       ],
-  //     ),
-  //   );
-  // }
+  Widget buildMostRecently(){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Most Recently",style: AppTextStyles.whiteBold16,),
+        SizedBox(height: 16,),
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 10,
+              itemBuilder: (context,index)=> buildMostRecentSurItem(context)
+          ),
+        )
+      ],
+    );
+  }
+  Widget buildMostRecentSurItem(BuildContext context){
+    return Container(
+      margin: EdgeInsets.only(right: 10),
+      height: MediaQuery.of(context).size.height*.16,
+      width: MediaQuery.of(context).size.width*.6,
+      decoration: BoxDecoration(
+        color: AppColors.gold,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text("Al-Anbiya",style: AppTextStyles.lightBlackBold14,),
+              Text("الأنبياء",style: AppTextStyles.lightBlackBold14,),
+              Text("112 Verses  ",style: AppTextStyles.lightBlackBold14,),
+
+            ],
+          ),
+          Image.asset(AppAssets.imgMostRecent)
+        ],
+      ),
+    );
+  }
   Widget buildSuraListView() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text("Suras List", style: AppTextStyles.whiteBold16),
+        SizedBox(height: 5),
         Expanded(
           child: ListView.separated(
             padding: EdgeInsets.zero,
             itemCount: surasList.length,
             itemBuilder: (context, index) => SuraItem(sura: surasList[index],),
-            separatorBuilder: (_, _) => Divider(),
+            separatorBuilder: (_, _) => Divider(endIndent: 23,indent: 23),
           ),
         ),
       ],
