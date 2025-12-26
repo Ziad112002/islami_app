@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/ui/screens/main/main.dart';
 import 'package:islami/ui/screens/splash/splash.dart';
+import 'package:islami/ui/screens/sura_details/sura_details.dart';
 
 void main() {
   runApp(const IslamiApp());
@@ -16,7 +17,8 @@ class IslamiApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     routes: {
       Splash.routeName:(context)=>Splash(),
-      Main.routeName:(context)=>Main()
+      Main.routeName:(context)=>Main(),
+      SuraDetails.routeName:(context)=>SuraDetails(),
     },
     initialRoute: Splash.routeName,
     );

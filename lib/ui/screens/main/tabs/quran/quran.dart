@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:islami/ui/screens/main/tabs/quran/sura_item.dart';
 import 'package:islami/ui/utils/app_assets.dart';
 import 'package:islami/ui/utils/app_text_style.dart';
-
+import 'package:islami/ui/utils/constants.dart';
 import '../../../../utils/app_colors.dart';
+
 class Quran extends StatelessWidget {
   const Quran({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16),
       width: double.infinity,
       height: double.infinity,
       decoration: BoxDecoration(
-        image: DecorationImage(image: AssetImage(AppAssets.quranTabBg),fit: BoxFit.fill)
+        image: DecorationImage(
+          image: AssetImage(AppAssets.quranTabBg),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
         children: [
           Image.asset(AppAssets.mosqueImg),
-          SizedBox(height: 16,),
+          SizedBox(height: 16),
           buildSurNameTextField(),
-          SizedBox(height: 16,),
-          Expanded(
-              flex:3,child: buildMostRecently()),
-          Spacer(flex: 7,)
+          SizedBox(height: 16),
+          Expanded(child: buildSuraListView()),
         ],
       ),
     );
   }
-  Widget buildSurNameTextField(){
+
+  Widget buildSurNameTextField() {
     var border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(15),
       borderSide: BorderSide(width: 1, color: AppColors.gold),
@@ -37,8 +41,11 @@ class Quran extends StatelessWidget {
       style: AppTextStyles.whiteBold16,
       decoration: InputDecoration(
         label: Text("Sura Name"),
-        labelStyle:AppTextStyles.whiteBold16 ,
-        prefixIcon: ImageIcon(AssetImage(AppAssets.icQuran,),color: AppColors.gold,),
+        labelStyle: AppTextStyles.whiteBold16,
+        prefixIcon: ImageIcon(
+          AssetImage(AppAssets.icQuran),
+          color: AppColors.gold,
+        ),
         border: border,
         enabledBorder: border,
         disabledBorder: border,
@@ -46,50 +53,67 @@ class Quran extends StatelessWidget {
         focusedBorder: border,
       ),
     );
-
   }
-  Widget buildMostRecently(){
+
+  // Widget buildMostRecently(){
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text("Most Recently",style: AppTextStyles.whiteBold16,),
+  //       SizedBox(height: 16,),
+  //       Expanded(
+  //         child: ListView.builder(
+  //           scrollDirection: Axis.horizontal,
+  //           itemCount: 10,
+  //             itemBuilder: (context,index)=> buildMostRecentSurItem(context)
+  //         ),
+  //       )
+  //     ],
+  //   );
+  // }
+  // Widget buildMostRecentSurItem(BuildContext context){
+  //   return Container(
+  //     margin: EdgeInsets.only(right: 10),
+  //     height: MediaQuery.of(context).size.height*.16,
+  //     width: MediaQuery.of(context).size.width*.6,
+  //     decoration: BoxDecoration(
+  //       color: AppColors.gold,
+  //       borderRadius: BorderRadius.circular(20),
+  //     ),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //
+  //
+  //       children: [
+  //         Column(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             Text("Al-Anbiya",style: AppTextStyles.lightBlackBold14,),
+  //             Text("الأنبياء",style: AppTextStyles.lightBlackBold14,),
+  //             Text("112 Verses  ",style: AppTextStyles.lightBlackBold14,),
+  //
+  //           ],
+  //         ),
+  //         Image.asset(AppAssets.imgMostRecent)
+  //       ],
+  //     ),
+  //   );
+  // }
+  Widget buildSuraListView() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text("Most Recently",style: AppTextStyles.whiteBold16,),
-        SizedBox(height: 16,),
+        Text("Suras List", style: AppTextStyles.whiteBold16),
         Expanded(
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 10,
-              itemBuilder: (context,index)=> buildMostRecentSurItem(context)
+          child: ListView.separated(
+            padding: EdgeInsets.zero,
+            itemCount: surasList.length,
+            itemBuilder: (context, index) => SuraItem(sura: surasList[index],),
+            separatorBuilder: (_, _) => Divider(),
           ),
-        )
+        ),
       ],
     );
   }
-  Widget buildMostRecentSurItem(BuildContext context){
-    return Container(
-      margin: EdgeInsets.only(right: 10),
-      height: MediaQuery.of(context).size.height*.16,
-      width: MediaQuery.of(context).size.width*.6,
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-
-
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text("Al-Anbiya",style: AppTextStyles.lightBlackBold14,),
-              Text("الأنبياء",style: AppTextStyles.lightBlackBold14,),
-              Text("112 Verses  ",style: AppTextStyles.lightBlackBold14,),
-
-            ],
-          ),
-          Image.asset(AppAssets.imgMostRecent)
-        ],
-      ),
-    );
-  }
 }
+
