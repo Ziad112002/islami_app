@@ -14,6 +14,11 @@ abstract final class AppAssets {
   static const String imgLeftCorner = '${_base}img_left_corner.png';
   static const String imgRightCorner = '${_base}img_right_corner.png';
   static const String mosque = '${_base}Mosque-02.png';
+  static const String welcomeAr = '${_base}marhba.png';
+  static const String kaaba = '${_base}kabba.png';
+  static const String bearish = '${_base}bearish.png';
+  static const String radio = '${_base}radio.png';
+  static const String welcomeImg = '${_base}welcome.png';
 
 
 

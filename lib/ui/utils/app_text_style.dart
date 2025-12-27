@@ -11,7 +11,7 @@ abstract final class AppTextStyles {
   static const TextStyle whiteBold14 = TextStyle(
     fontSize: 14,
     color: AppColors.white,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle whiteBold16 = TextStyle(
     fontSize: 16,
@@ -24,6 +24,10 @@ abstract final class AppTextStyles {
     fontWeight: FontWeight.bold,
   ); static const TextStyle goldBold24 = TextStyle(
     fontSize: 24,
+    color: AppColors.gold,
+    fontWeight: FontWeight.bold,
+  ); static const TextStyle goldBold16 = TextStyle(
+    fontSize: 16,
     color: AppColors.gold,
     fontWeight: FontWeight.bold,
   );
