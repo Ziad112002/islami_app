@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 abstract final class AppTextStyles {
-  static const TextStyle whiteBold20 = TextStyle(
+  static const TextStyle whiteBold36 = TextStyle(
+    fontSize: 36,
+    color: AppColors.white,
+    fontWeight: FontWeight.w700,
+  ); static const TextStyle whiteBold20 = TextStyle(
     fontSize: 20,
     color: AppColors.white,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle whiteBold14 = TextStyle(
     fontSize: 14,
@@ -16,34 +20,34 @@ abstract final class AppTextStyles {
   static const TextStyle whiteBold16 = TextStyle(
     fontSize: 16,
     color: AppColors.white,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle goldBold20 = TextStyle(
     fontSize: 20,
     color: AppColors.gold,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   ); static const TextStyle goldBold24 = TextStyle(
     fontSize: 24,
     color: AppColors.gold,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   ); static const TextStyle goldBold16 = TextStyle(
     fontSize: 16,
     color: AppColors.gold,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle lightBlackBold16 = TextStyle(
     fontSize: 16,
     color: AppColors.lightBlack,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle lightBlackBold14 = TextStyle(
     fontSize: 14,
     color: AppColors.lightBlack,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
   static const TextStyle lightBlackBold24 = TextStyle(
     fontSize: 24,
     color: AppColors.lightBlack,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
   );
 }

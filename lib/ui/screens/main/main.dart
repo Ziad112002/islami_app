@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:islami/ui/screens/main/tabs/quran/quran_tab.dart';
+import 'package:islami/ui/screens/main/tabs/sebha/sebha_tab.dart';
 import 'package:islami/ui/utils/app_colors.dart';
 
 import '../../utils/app_assets.dart';
@@ -18,7 +19,7 @@ class _MainState extends State<Main> {
   List tabs=[
     QuranTab(),
     Container(color: Colors.grey,),
-    Container(color: Colors.deepOrange,),
+    SebhaTab(),
     Container(color: Colors.cyanAccent,),
     Container(color: Colors.pink,),
 
