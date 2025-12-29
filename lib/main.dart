@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/screens/main/main.dart';
+import 'package:islami/ui/screens/hadith_details/hadith_details.dart';
+import 'package:islami/ui/screens/main/main_tab.dart';
 import 'package:islami/ui/screens/splash/onboarding.dart';
 import 'package:islami/ui/screens/splash/splash.dart';
 import 'package:islami/ui/screens/sura_details/sura_details.dart';
@@ -18,9 +19,10 @@ class IslamiApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
     routes: {
       Splash.routeName:(context)=>Splash(),
-      Main.routeName:(context)=>Main(),
+      MainTab.routeName:(context)=>MainTab(),
       SuraDetails.routeName:(context)=>SuraDetails(),
       Onboarding.routeName:(context)=>Onboarding(),
+      HadithDetails.routeName:(context)=>HadithDetails(),
     },
     initialRoute: Splash.routeName,
     );

@@ -1,24 +1,25 @@
 
 import 'package:flutter/material.dart';
+import 'package:islami/ui/screens/main/tabs/ahadith/hadith_tab.dart';
 import 'package:islami/ui/screens/main/tabs/quran/quran_tab.dart';
 import 'package:islami/ui/screens/main/tabs/sebha/sebha_tab.dart';
 import 'package:islami/ui/utils/app_colors.dart';
 
 import '../../utils/app_assets.dart';
 
-class Main extends StatefulWidget {
+class MainTab extends StatefulWidget {
   static const String routeName = "main";
-  const Main({super.key});
+  const MainTab({super.key});
 
   @override
-  State<Main> createState() => _MainState();
+  State<MainTab> createState() => _MainTabState();
 }
 
-class _MainState extends State<Main> {
+class _MainTabState extends State<MainTab> {
   int selectedIndex = 0;
   List tabs=[
     QuranTab(),
-    Container(color: Colors.grey,),
+    HadithTab(),
     SebhaTab(),
     Container(color: Colors.cyanAccent,),
     Container(color: Colors.pink,),

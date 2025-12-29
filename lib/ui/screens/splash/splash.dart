@@ -1,7 +1,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:islami/ui/screens/main/main.dart';
+import 'package:islami/ui/screens/main/main_tab.dart';
 import 'package:islami/ui/screens/splash/onboarding.dart';
 import 'package:islami/ui/utils/app_assets.dart';
 

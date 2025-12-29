@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/screens/main/main.dart';
+import 'package:islami/ui/screens/main/main_tab.dart';
 import 'package:islami/ui/utils/app_assets.dart';
 import 'package:islami/ui/utils/app_colors.dart';
 import 'package:islami/ui/utils/app_text_style.dart';
@@ -79,7 +79,7 @@ class _OnboardingState extends State<Onboarding> {
                     )
                   : TextButton(
                       onPressed: (){
-                        Navigator.pushNamed(context, Main.routeName);
+                        Navigator.pushNamed(context, MainTab.routeName);
                       },
                       child: Text("Finish", style: AppTextStyles.goldBold16),
                     ),

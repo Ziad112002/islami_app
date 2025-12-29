@@ -49,5 +49,9 @@ abstract final class AppTextStyles {
     fontSize: 24,
     color: AppColors.lightBlack,
     fontWeight: FontWeight.w700,
+  );static const TextStyle lightBlackBold20 = TextStyle(
+    fontSize: 20,
+    color: AppColors.lightBlack,
+    fontWeight: FontWeight.w700,
   );
 }
