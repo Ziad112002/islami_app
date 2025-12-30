@@ -66,7 +66,7 @@ class _SuraDetailsState extends State<SuraDetails> {
   }
 
   Future readFile() async {
-    var fileName = "assets/suras/${sura.suraIndex}.txt";
+    var fileName = "assets/files/suras/${sura.suraIndex}.txt";
     suraContent = await rootBundle.loadString(fileName);
     suraContent=suraContent.trim();
     List<String> suraLines=suraContent.split("\n");
