@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/ui/models/onboarding_model.dart';
 import 'package:islami/ui/screens/main/main_tab.dart';
 import 'package:islami/ui/utils/app_assets.dart';
 import 'package:islami/ui/utils/app_colors.dart';
@@ -16,53 +17,57 @@ class Onboarding extends StatefulWidget {
 class _OnboardingState extends State<Onboarding> {
   final PageController _pageController = PageController();
   int _currentIndex = 0;
+  List<OnboardingModel> onboardingData = [
+    OnboardingModel(
+      imagePath: AppAssets.welcomeAr,
+      label: "Welcome To Islami App",
+      description: "",
+    ),
+    OnboardingModel(
+      imagePath: AppAssets.kaaba,
+      label: "Welcome To Islami App",
+      description: "We Are Very Excited To Have You In Our Community",
+    ),
+    OnboardingModel(
+      imagePath: AppAssets.welcomeImg,
+      label: "Reading the Quran",
+      description: "Read, and your Lord is the Most Generous",
+    ),
+    OnboardingModel(
+      imagePath: AppAssets.bearish,
+      label: "Bearish",
+      description: "Praise the name of your Lord, the Most\n High",
+    ),
+    OnboardingModel(
+      imagePath: AppAssets.radio,
+      label: "Holy Quran Radio",
+      description:
+          "You can listen to the Holy Quran Radio through the application for free and easily",
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.lightBlack,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Image.asset(AppAssets.islamiImg),
-          SizedBox(height: 60),
-          Expanded(
-            child: PageView(
-              onPageChanged: _onPagedChanged,
-              controller: _pageController,
-              children: [
-                buildAppWelcome(
-                  AppAssets.welcomeAr,
-                  "Welcome To Islami App",
-                  null,
-                ),
-                buildAppWelcome(
-                  AppAssets.kaaba,
-                  "Welcome To Islami App",
-                  "We Are Very Excited To Have You In Our Community",
-                ),
-                buildAppWelcome(
-                  AppAssets.welcomeImg,
-                  "Reading the Quran",
-                  "Read, and your Lord is the Most Generous",
-                ),
-                buildAppWelcome(
-                  AppAssets.bearish,
-                  "Bearish",
-                  "Praise the name of your Lord, the Most\n High",
-                ),
-                buildAppWelcome(
-                  AppAssets.radio,
-                  "Holy Quran Radio",
-                  "You can listen to the Holy Quran Radio through the application for free and easily",
-                ),
-              ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Image.asset(AppAssets.islamiImg),
+            Expanded(
+              child: PageView.builder(
+                onPageChanged: _onPagedChanged,
+                controller: _pageController,
+                itemCount: onboardingData.length,
+                itemBuilder: (context, index) {
+                  return buildAppWelcome(onboardingData[index]);
+                },
+              ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
                 Visibility(
-                  visible: _currentIndex==0?false:true,
+                  visible: _currentIndex == 0 ? false : true,
                   maintainSize: true,
                   maintainAnimation: true,
                   maintainState: true,
@@ -71,47 +76,41 @@ class _OnboardingState extends State<Onboarding> {
                     child: Text("Back", style: AppTextStyles.goldBold16),
                   ),
                 ),
-              buildSmoothPageIndicator(),
-              _currentIndex != 4
-                  ? TextButton(
-                      onPressed: _nextPage,
-                      child: Text("Next", style: AppTextStyles.goldBold16),
-                    )
-                  : TextButton(
-                      onPressed: (){
-                        Navigator.pushNamed(context, MainTab.routeName);
-                      },
-                      child: Text("Finish", style: AppTextStyles.goldBold16),
-                    ),
-            ],
-          ),
-        ],
+                buildSmoothPageIndicator(),
+                _currentIndex != 4
+                    ? TextButton(
+                        onPressed: _nextPage,
+                        child: Text("Next", style: AppTextStyles.goldBold16),
+                      )
+                    : TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, MainTab.routeName);
+                        },
+                        child: Text("Finish", style: AppTextStyles.goldBold16),
+                      ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget buildAppWelcome(String imagePath, String text, String? subText) {
-    return subText == null
-        ? Column(
-            children: [
-              Image.asset(imagePath),
-              SizedBox(height: 69),
-              Text(text, style: AppTextStyles.goldBold24),
-            ],
-          )
-        : Column(
-            children: [
-              Image.asset(imagePath),
-              SizedBox(height: 40),
-              Text(text, style: AppTextStyles.goldBold24),
-              SizedBox(height: 40),
-              Text(
-                subText,
-                textAlign: TextAlign.center,
-                style: AppTextStyles.goldBold20,
-              ),
-            ],
-          );
+  Widget buildAppWelcome(OnboardingModel data) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Image.asset(data.imagePath),
+
+        Text(data.label, style: AppTextStyles.goldBold24),
+
+        Text(
+          data.description,
+          style: AppTextStyles.goldBold20,
+          textAlign: TextAlign.center,
+        ),
+      ],
+    );
   }
 
   Widget buildSmoothPageIndicator() {
@@ -133,20 +132,16 @@ class _OnboardingState extends State<Onboarding> {
   }
 
   void _nextPage() {
-    if (_currentIndex < 4) {
-      _pageController.nextPage(
-        duration: Duration(milliseconds: 350),
-        curve: Curves.easeIn,
-      );
-    }
+    _pageController.nextPage(
+      duration: Duration(milliseconds: 350),
+      curve: Curves.easeIn,
+    );
   }
 
   void _previousPage() {
-    if (_currentIndex > 0) {
-      _pageController.previousPage(
-        duration: Duration(milliseconds: 500),
-        curve: Curves.easeIn,
-      );
-    }
+    _pageController.previousPage(
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeIn,
+    );
   }
 }
