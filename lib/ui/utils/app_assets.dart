@@ -20,7 +20,8 @@ abstract final class AppAssets {
   static const String radio = '${_base}radio.png';
   static const String welcomeImg = '${_base}welcome.png';
   static const String sebhaBg = '${_base}sebha_bg.png';
-  static const String bigSebha = '${_base}Sebha.png';
+  static const String sebhaBody = '${_base}SebhaBody.png';
+  static const String sebhaHeader = '${_base}SebhaHeader.png';
   static const String hadithBg = '${_base}hadith_bg.png';
   static const String hadithCardBg = '${_base}HadithCardbg.png';
 
