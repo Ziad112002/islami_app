@@ -4,8 +4,13 @@ import 'package:islami/ui/screens/main/main_tab.dart';
 import 'package:islami/ui/screens/splash/onboarding.dart';
 import 'package:islami/ui/screens/splash/splash.dart';
 import 'package:islami/ui/screens/sura_details/sura_details.dart';
-
-void main() {
+import 'package:islami/ui/utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+bool? showOnboarding;
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  showOnboarding = prefs.getBool(AppConstants.displayOnboarding) ?? true;
   runApp(const IslamiApp());
 }
 
@@ -24,7 +29,7 @@ class IslamiApp extends StatelessWidget {
       Onboarding.routeName:(context)=>Onboarding(),
       HadithDetails.routeName:(context)=>HadithDetails(),
     },
-    initialRoute: Splash.routeName,
+    initialRoute:showOnboarding!? Onboarding.routeName:MainTab.routeName,
     );
   }
 }

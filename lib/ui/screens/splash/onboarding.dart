@@ -4,6 +4,8 @@ import 'package:islami/ui/screens/main/main_tab.dart';
 import 'package:islami/ui/utils/app_assets.dart';
 import 'package:islami/ui/utils/app_colors.dart';
 import 'package:islami/ui/utils/app_text_style.dart';
+import 'package:islami/ui/utils/constants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Onboarding extends StatefulWidget {
@@ -77,17 +79,20 @@ class _OnboardingState extends State<Onboarding> {
                   ),
                 ),
                 buildSmoothPageIndicator(),
-                _currentIndex != 4
-                    ? TextButton(
-                        onPressed: _nextPage,
-                        child: Text("Next", style: AppTextStyles.goldBold16),
-                      )
-                    : TextButton(
-                        onPressed: () {
+                TextButton(
+                  onPressed: _currentIndex != 4
+                      ? _nextPage
+                      : () async {
+                          SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                          await prefs.setBool(AppConstants.displayOnboarding, false);
                           Navigator.pushNamed(context, MainTab.routeName);
                         },
-                        child: Text("Finish", style: AppTextStyles.goldBold16),
-                      ),
+                  child: Text(
+                    _currentIndex != 4 ? "Next" : "Finish",
+                    style: AppTextStyles.goldBold16,
+                  ),
+                ),
               ],
             ),
           ],

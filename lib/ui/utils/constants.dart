@@ -670,3 +670,6 @@ List<SuraDm> surasList = [
     suraVerses: "6",
   ),
 ];
+abstract final class AppConstants {
+  static const  String displayOnboarding = 'onboarding_seen';
+}
